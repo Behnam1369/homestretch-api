@@ -5,21 +5,22 @@ class UsersController < ApplicationController
 
   def save_profile
     if current_user.update(profile_params)
-      render json: { message: 'Success'}
+      render json: { message: 'Success' }
     else
       render json: { message: 'Error', errors: current_user.errors }
     end
   end
 
   def upload_avatar
-    path = Rails.root.join('public', 'files',"#{current_user.id}.png")
+    path = Rails.root.join('public', 'files', "#{current_user.id}.png")
     File.binwrite(path, params[:file].read)
-    render json: { message: 'Success'}
+    render json: { message: 'Success' }
   end
 
   def profile_params
     params.require(:user).permit(
-      :fname, :lname, :phone, :birth_date, :veteran_status, :home_buying_status, :race, :address1, :address2, :city, :zipcode, 
+      :fname, :lname, :phone, :birth_date, :veteran_status,
+      :home_buying_status, :race, :address1, :address2, :city, :zipcode,
       :employment_status, :income, :debt_to_income, :credit_score,
       :when, :house_type, :budget, :where,
       :inactive
