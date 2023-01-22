@@ -44,6 +44,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_183306) do
     t.string "address2"
     t.string "city"
     t.string "zipcode"
+    t.string "employment_status"
+    t.string "income"
+    t.string "debt_to_income"
+    t.string "credit_score"
+    t.string "when"
+    t.string "house_type"
+    t.string "budget"
+    t.string "where"
+    t.string "avatar"
+    t.string "inactive"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
