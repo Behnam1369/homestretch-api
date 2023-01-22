@@ -22,8 +22,6 @@ class AddProfileFieldsToUsers < ActiveRecord::Migration[7.0]
     add_column :users, :budget, :string
     add_column :users, :where, :string
 
-    add_column :users, :avatar, :string
-
     add_column :users, :inactive, :string
   end
 end
