@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'contents/education', to: 'contents#education'
+  get 'contents/resource', to: 'contents#resource'
+  resources :contents, except: %i[new index]
+
   devise_for :users,
              defaults: { format: :json },
              controllers: {
