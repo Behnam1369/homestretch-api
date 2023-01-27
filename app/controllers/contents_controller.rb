@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-  before_action :set_content, only: %i[ show update destroy ]
+  before_action :set_content, only: %i[show update destroy]
 
   # GET /contents/education
   def education
@@ -8,7 +8,7 @@ class ContentsController < ApplicationController
   end
 
   # GET /contents/resource
-  def education
+  def resource
     @contents = Content.where(content_type: 'resource')
     render json: @contents
   end
@@ -45,15 +45,15 @@ class ContentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_content
-      @content = Content.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def content_params
-      params.require(:content).permit(:title, :thumbnail, :content_type, 
-      pages_attributes: [:title, :body]
-      )
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_content
+    @content = Content.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def content_params
+    params.require(:content).permit(:title, :thumbnail, :content_type,
+                                    pages_attributes: %i[title body])
+  end
 end
