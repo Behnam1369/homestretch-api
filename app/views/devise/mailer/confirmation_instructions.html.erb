@@ -1,0 +1,22 @@
+<p>Welcome <b><%= @email %>!</b></p>
+
+<p>Thanks for signing up at <%= link_to 'Homestretch', 'https://homestretch.netlify.app' %>. To confirm your email address, please click on the below link.</p>
+
+<p style="margin-top: 30px;margin-bottom: 30px;" >
+  <%= link_to 'Confirm my account', "https://homestretch.netlify.app/confirm_account/#{@token}",  
+  style:"color: white;
+    font-weight: bold;
+    background-color: #4143e2;
+    padding: 15px;
+    border-radius: 10px;" %>
+</p>
+
+<p>
+Best reagrds, <br/>
+Homestretch Team <br/>
+<img src='https://i.ibb.co/d0T7zsC/homestretch.png' 
+  style="width: 120px;
+    height: 25px;
+    margin-top: 5px;">
+</p>
+
