@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       :home_buying_status, :race, :address1, :address2, :city, :zipcode,
       :employment_status, :income, :debt_to_income, :credit_score,
       :when, :house_type, :budget, :where,
-      :avatar, :inactive
+      :avatar, :inactive, :first_update_date
     )
   end
 end
