@@ -6,15 +6,13 @@ module Users
       build_resource(sign_up_params)
 
       if User.exists?(email: resource.email)
-        return render json: { success: false, error: "Email has already been taken" }
+        return render json: { success: false, error: 'Email has already been taken' }
       end
 
       resource.save
-      if resource.persisted?
-        render json: { success: true, data: resource }
-      else
-        return render json: { success: false, error: resource.errors.full_messages }
-      end
+      return render json: { success: false, error: resource.errors.full_messages } unless resource.persisted?
+
+      render json: { success: true, data: resource }
     end
 
     private

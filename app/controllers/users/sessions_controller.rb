@@ -14,8 +14,8 @@ module Users
       self.resource = warden.authenticate!(auth_options)
       sign_in(resource_name, resource)
       render json: { success: true, data: resource }
-    rescue ActiveRecord::RecordNotFound, Devise::InvalidPassword => e
-      render json: { success: false, error: "Invalid email or password" }
+    rescue ActiveRecord::RecordNotFound, Devise::InvalidPassword
+      render json: { success: false, error: 'Invalid email or password' }
     end
 
     private
