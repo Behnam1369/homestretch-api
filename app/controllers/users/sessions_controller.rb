@@ -2,12 +2,20 @@ module Users
   class SessionsController < Devise::SessionsController
     respond_to :json
 
+    # def create
+    #   if user_signed_in?
+    #     render json: { message: 'Signed in successfully.', role: current_user.role }, status: :ok
+    #   else
+    #     render json: { message: 'Wrong credentials. Please try again.' }, status: :unauthorized
+    #   end
+    # end
+
     def create
-      if user_signed_in?
-        render json: { message: 'Signed in successfully.', role: current_user.role }, status: :ok
-      else
-        render json: { message: 'Wrong credentials. Please try again.' }, status: :unauthorized
-      end
+      self.resource = warden.authenticate!(auth_options)
+      sign_in(resource_name, resource)
+      render json: { success: true, data: resource }
+    rescue ActiveRecord::RecordNotFound, Devise::InvalidPassword
+      render json: { success: false, error: 'Invalid email or password' }
     end
 
     private
