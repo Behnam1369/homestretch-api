@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
   before_action :set_content, only: %i[show update destroy]
+  skip_before_action :authenticate_user!, only: %i[education resource show]
 
   # GET /contents/education
   def education
