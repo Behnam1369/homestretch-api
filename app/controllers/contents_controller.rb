@@ -15,7 +15,7 @@ class ContentsController < ApplicationController
   end
 
   def specific_content
-    @contents= Content.where(content_type: params[:content_type])
+    @contents = Content.where(content_type: params[:content_type])
     render json: @contents
   end
 
