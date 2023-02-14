@@ -1,6 +1,6 @@
 class ContentsController < ApplicationController
   before_action :set_content, only: %i[show update destroy]
-  skip_before_action :authenticate_user!, only: %i[education resource show]
+  skip_before_action :authenticate_user!, only: %i[education resource specific_content show]
 
   # GET /contents/education
   def education
@@ -11,6 +11,11 @@ class ContentsController < ApplicationController
   # GET /contents/resource
   def resource
     @contents = Content.where(content_type: 'resource')
+    render json: @contents
+  end
+
+  def specific_content
+    @contents = Content.where(content_type: params[:content_type])
     render json: @contents
   end
 
