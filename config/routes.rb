@@ -3,8 +3,8 @@
 Rails.application.routes.draw do
   get 'contents/education', to: 'contents#education'
   get 'contents/resource', to: 'contents#resource'
-  get 'contents/:content_type', to: 'contents#specific_content'
-
+  get 'contents/other/:content_type', to: 'contents#specific_content'
+  
   resources :contents, except: %i[new index]
 
   devise_for :users,
